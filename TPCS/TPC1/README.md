@@ -19,4 +19,5 @@
 -- Distribuição por níveis de colesterol --
 
 ![colest1](https://user-images.githubusercontent.com/73347917/220181316-04f8aa0c-cfcf-471a-8226-d95eecdbe41a.png)
+
 (...)
