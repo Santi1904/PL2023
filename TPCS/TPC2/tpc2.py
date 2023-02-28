@@ -9,6 +9,15 @@ def concatNumList(l):
 
     return num   
 
+
+def sumConcatList(l):
+    sum = 0
+    concatL = concatNumList(l)
+    sum += int(concatL[0])
+
+    return sum
+
+
 def reader(inp):
     print("")
     i = 0
@@ -34,16 +43,16 @@ def reader(inp):
                     numb.append(strin[j])
                 else:
                     if(numb != []):      
-                        concatL = concatNumList(numb)
+                        sum += sumConcatList(numb)
                         numb = []
-                        sum += int(concatL[0])
                 if(strin[j] == "="):
-                    print(f"[SUM => {sum}]")        
+                    print(f"[SUM => {sum}]")   
+                         
             if(flag == 1):
                 if(numb != []):
-                    concatL = concatNumList(numb)
+                    sum += sumConcatList(numb)
                     numb = []
-                    sum += int(concatL[0])
+
                 if(strin[j] == "="):
                     print(f"[SUM => {sum}]")
   
