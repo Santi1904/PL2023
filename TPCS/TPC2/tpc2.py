@@ -33,11 +33,9 @@ def reader(inp):
             if(j< len(strin)-1 and strin[j].upper() == 'O' and strin[j+1].upper() == 'N'):
                 print("» SUM ON...")
                 flag = 0
-   
             elif(j < len(strin)-2 and strin[j].upper() == 'O' and strin[j+1].upper() == 'F' and strin[j+2].upper() == 'F'):
                 print("» SUM OFF...")
                 flag = 1
-     
             if(flag == 0):
                 if(strin[j].isdigit()):
                     numb.append(strin[j])
@@ -46,17 +44,14 @@ def reader(inp):
                         sum += sumConcatList(numb)
                         numb = []
                 if(strin[j] == "="):
-                    print(f"[SUM => {sum}]")   
-                         
+                    print(f"[SUM => {sum}]")             
             if(flag == 1):
                 if(numb != []):
                     sum += sumConcatList(numb)
                     numb = []
-
                 if(strin[j] == "="):
                     print(f"[SUM => {sum}]")
   
-
 def main():
 
    while(1):
