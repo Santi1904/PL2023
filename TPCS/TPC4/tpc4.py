@@ -26,7 +26,7 @@ def meanList(l):
 
 def parse_csv(file):
 
-    f = [l.strip() for l in open(file)]
+    f = [x.strip() for x in open(file)]
     header = f.pop(0).split(",")
     headerStrip = concatHeader(stripList(header))
     l = []
