@@ -41,7 +41,7 @@ def parse_csv(file):
                 if(num.group(2)).isdigit():
                     max = int(num.group(2))
                 else:  
-                    max = int(num.group()[1:-1]) 
+                    max = int(num.group(1)) 
                 nStrip = re.sub(r'{(\d+),?(\d*)}','',headerStrip[pos])
                 op = re.search(r'::([a-z]+)',nStrip)
                 key = re.sub(r'::','_',nStrip)
@@ -97,7 +97,6 @@ def main():
         name = re.search(r'(\w+)',file)
         outputFileName = json_dir+name.group(0)+'.json'
         outJson(data,outputFileName)
-
 
 if __name__ == "__main__":
    main()
