@@ -1,5 +1,26 @@
 import re
 
+def returnChange(bal):
+
+    coins = [2,1,0.5,0.2,0.1,0.05,0.02,0.01]
+    r = 'maq: troco='
+    for c in coins:
+        if bal >= c:
+           x = bal // c
+           bal %= c
+           if x > 0:
+               if c < 1:
+                    c *= 100
+                    r += f'{int(x)}x{int(c)}c,'
+               else:
+                   r += f'{int(x)}x{int(c)}e,'
+    r += ' Volte Sempre!'
+    r = re.sub(r', V','; V',r)
+    
+    return r
+
+
+
 def convertBalance(b):
     k = "{:.2f}".format(b)
     newSum = re.sub(r'\.','e',k)
@@ -63,7 +84,7 @@ def phone_booth(input,bal):
             return(call(phone_num,bal))
         else:
             print('Número Inválido')
-    elif re.match(r'ABORTAR$',input) or re.match(r'POUSAR$',input):
+    elif re.match(r'ABORTAR',input) or re.match(r'POUSAR',input):
         return bal
     else:
         print("Opção Inválida")
@@ -71,13 +92,11 @@ def phone_booth(input,bal):
                     
 def main():
     bal = 0
-    state = ''
-    while(state != "POUSAR" and state != "ABORTAR") :
+    state = ""
+    while(state != 'POUSAR'):
         state = input()
         bal = phone_booth(state,bal)
-    tot = convertBalance(bal)
-    print(f'maq: troco = {tot}; Volte sempre!')    
-    
-
+    print(returnChange(bal))
+   
 if __name__ == "__main__":
     main()
