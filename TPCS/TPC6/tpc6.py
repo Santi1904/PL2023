@@ -13,6 +13,7 @@ tokens = (
     'INT',
     'IDENTIFIER',
     'FUNCTION',
+    'PROGRAM',
     'NUMBER',
     'ATRIB',
     'MULT',
@@ -22,7 +23,6 @@ tokens = (
     'GREATER',
     'LESS',
     'IN',
-    #'RANGE'
     'DOUBLE_DOT',
     'OP_SQRBRAC',
     'CL_SQRBRAC'
@@ -34,16 +34,11 @@ t_OP_PAREN = r'\('
 t_CL_PAREN = r'\)'
 t_COLON = r'\,'
 t_SEMICOLON = r'\;'
-t_INT = r'int'
-t_FUNCTION =  r'function'
 t_ATRIB = r'\='
 t_MULT = r'\*'
 t_SUB = r'\-'
-t_WHILE = r'while'
-t_FOR = r'for'
 t_GREATER = r'\>'
 t_LESS = r'\<'
-t_IN = r'in'
 t_DOUBLE_DOT = r'\.\.'
 t_OP_SQRBRAC = r'\['
 t_CL_SQRBRAC = r'\]'
@@ -56,19 +51,39 @@ def t_MULTI_COMMENT_STRING(t):
 def t_SINGLE_COMMENT_STRING(t):
    r'\/\/.*'
    return t
+
+def t_PROGRAM(t):
+  r'program'
+  return t
+
+def t_FUNCTION(t):
+   r'function'
+   return t
+
+def t_INT(t):
+   r'int'
+   return t
    
 def t_NUMBER(t):
   r'\d+'
   t.value = int(t.value)
   return t
+
+def t_WHILE(t):
+   r'while'
+   return t
+
+def t_FOR(t):
+   r'for'
+   return t
+
+def t_IN(t):
+   r'in'
+   return t
  
 def t_IDENTIFIER(t):
-    r'\w+'
-    return t
-
-#def t_RANGE(t):
-#   r'\[\d+\.\.\d+\]'
-#   return t
+  r'\w+'
+  return t
 
 t_ignore = ' \t\n'
 
@@ -124,7 +139,7 @@ program myMax{
 }
 '''
 
-lexer.input(data2)
+lexer.input(data1)
 
 while tok := lexer.token():
     print(tok)
